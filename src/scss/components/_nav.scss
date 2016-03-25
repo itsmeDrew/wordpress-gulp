@@ -28,11 +28,13 @@
       text-align: center;
     }
 
-    &:hover {
-      .children {
-        transform: scale(1);
-        visibility: visible;
-        opacity: 1;
+    @include breakpointLargerThan($breakpoint--medium) {
+      &:hover {
+        .children {
+          transform: scale(1);
+          visibility: visible;
+          opacity: 1;
+        }
       }
     }
   }
@@ -68,12 +70,14 @@
     }
   }
 
-  &.page_item_has_children {
-    &:after {
-      @include centerHorizontal();
-      @include arrowDown(5px, $white);
+  @include breakpointLargerThan($breakpoint--medium) {
+    &.page_item_has_children {
+      &:after {
+        @include centerHorizontal();
+        @include arrowDown(5px, $white);
 
-      right: 0;
+        right: 0;
+      }
     }
   }
 
@@ -85,7 +89,7 @@
   right: 0;
   min-width: 200px;
   border-radius: 5px;
-  transform: scale(1);
+  transform: scale(0);
   opacity: 0;
   visibility: hidden;
   transition: all 200ms ease-in;
