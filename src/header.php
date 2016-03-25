@@ -18,7 +18,7 @@
         <img src="<?php bloginfo('template_url'); ?>/img/logo.png" alt="logo">
       </a>
     </div>
-    <nav class="site-nav__nav">
+    <nav class="js-nav site-nav">
       <?php $navItems = array(
         'depth'        => 2,
         'post_status'  => 'publish',

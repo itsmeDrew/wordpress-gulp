@@ -9,6 +9,6 @@
       $(this).toggleClass('active');
       $('body').toggleClass('menu-active');
     });
-
+    
   });
 }(jQuery));

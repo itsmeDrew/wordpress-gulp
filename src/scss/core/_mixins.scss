@@ -119,3 +119,47 @@
   -moz-border-radius: $amount;
   -webkit-border-radius: $amount;
 }
+
+///////////////////////////////
+/// ARROW HELPERS
+///////////////////////////////
+
+@mixin arrow() {
+  width: 0;
+  height: 0;
+  position: absolute;
+  content: "";
+  display: block;
+}
+
+@mixin arrowUp($size, $color) {
+  @include arrow();
+
+  border-left: $size solid transparent;
+  border-right: $size solid transparent;
+  border-bottom: $size solid $color;
+}
+
+@mixin arrowDown($size, $color) {
+  @include arrow();
+
+  border-left: $size solid transparent;
+  border-right: $size solid transparent;
+  border-top: $size solid $color;
+}
+
+@mixin arrowLeft($size, $color) {
+  @include arrow();
+
+  border-top: $size solid transparent;
+  border-bottom: $size solid transparent;
+  border-right:$size solid $color;
+}
+
+@mixin arrowRight($size, $color) {
+  @include arrow();
+
+  border-top: $size solid transparent;
+  border-bottom: $size solid transparent;
+  border-left: $size solid $color;
+}

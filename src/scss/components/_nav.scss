@@ -2,7 +2,7 @@
 // COMP / NAV
 //////////////////////
 
-.site-nav__nav {
+.site-nav {
   position: absolute;
   top: $header__padding;
   right: $header__padding;
@@ -20,15 +20,30 @@
 
   li {
     display: inline-block;
+    position: relative;
 
     @include breakpointSmallerThan($breakpoint--medium) {
       padding: 1rem 0;
       display: block;
       text-align: center;
     }
+
+    &:hover {
+      .children {
+        transform: scale(1);
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.site-nav .page_item {
+  a {
+    display: block;
   }
 
-  a {
+  &>a {
     color: $white;
     text-transform: capitalize;
 
@@ -52,7 +67,55 @@
       }
     }
   }
+
+  &.page_item_has_children {
+    &:after {
+      @include centerHorizontal();
+      @include arrowDown(5px, $white);
+
+      right: 0;
+    }
+  }
+
 }
+
+.site-nav .children {
+  background: #fff;
+  position: absolute;
+  right: 0;
+  min-width: 200px;
+  border-radius: 5px;
+  transform: scale(1);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 200ms ease-in;
+  -moz-transition: all 200ms ease-in;
+  -webkit-transition: all 200ms ease-in;
+
+  &:before {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 0;
+  	height: 0;
+  	border-left: 5px solid transparent;
+  	border-right: 5px solid transparent;
+  	border-bottom: 5px solid $white;
+    top: -5px;
+    right: 30px;
+  }
+
+  li {
+    display: block;
+    text-align: center;
+  }
+
+  a {
+    color: $black;
+    display: block;
+  }
+}
+
 
 // hamburger animation
 
@@ -123,7 +186,7 @@
     height: 100%;
     width: 100%;
 
-    .site-nav__nav {
+    .site-nav {
       position: absolute;
       top: 0;
       background: $nav-mobile__background;
