@@ -1,0 +1,121 @@
+///////////////////////////////
+/// BREAKPOINT HELPERS
+///////////////////////////////
+
+@mixin breakpoint($breakpoint, $type: 'max') {
+  @media (#{$type}-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin breakpointBetween($fromBreakpoint, $toBreakpoint) {
+  @media (min-width: $fromBreakpoint) and (max-width: $toBreakpoint - 1) {
+    @content;
+  }
+}
+
+@mixin breakpointSmallerThan($breakpoint) {
+  @include breakpoint($breakpoint - 1, 'max') {
+    @content;
+  }
+}
+
+@mixin breakpointLargerThan($breakpoint) {
+  @include breakpoint($breakpoint, 'min') {
+    @content;
+  }
+}
+
+///////////////////////////////
+/// FONT HELPERS
+///////////////////////////////
+
+@function calculateRem($size) {
+  $remSize: $size / 16px;
+  @return $remSize * 1rem;
+}
+
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@mixin font-face($style-name, $file, $family, $font-weight, $category:"") {
+    $filepath: "../fonts/" + $family + "/" + $file;
+    @font-face {
+        font-weight: $font-weight;
+        font-family: "#{$style-name}";
+        src: url($filepath + ".ttf");
+        src: url($filepath + ".eot?#iefix") format('embedded-opentype'), url($filepath + ".woff") format('woff'), url($filepath + ".ttf")  format('truetype'), url($filepath + ".svg#" + $style-name + "") format('svg');
+    }
+    %#{$style-name} {
+        font: {
+            @if $category != "" {
+                family: "#{$style-name}", #{$category};
+            }
+            @else {
+                family: "#{$style-name}";
+                weight: normal;
+            }
+        }
+    }
+}
+
+
+///////////////////////////////
+/// CENTERING HELPERS
+///////////////////////////////
+
+@mixin centerHorizontal() {
+  top: 50%;
+  transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+}
+
+@mixin centerVertical() {
+  left: 50%;
+  transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+}
+
+@mixin centerAll() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+}
+
+
+///////////////////////////////
+/// STYLE HELPERS
+///////////////////////////////
+
+@mixin gradientLinear ($colorFrom, $colorTo) {
+  background: $colorTo;
+  background: -webkit-linear-gradient($colorFrom, $colorTo, $colorTo);
+  background: -o-linear-gradient($colorFrom, $colorTo, $colorTo);
+  background: -moz-linear-gradient($colorFrom, $colorTo, $colorTo);
+  background: linear-gradient($colorFrom, $colorTo, $colorTo);
+}
+
+@mixin boxShadow($amount, $inset: false) {
+ @if($inset) {
+   box-shadow: inset $amount;
+   -moz-box-shadow: inset $amount;
+   -webkit-box-shadow: inset $amount;
+ } @else {
+   box-shadow: $amount;
+   -moz-box-shadow: $amount;
+   -webkit-box-shadow: $amount;
+ }
+
+}
+
+@mixin borderRadius($amount) {
+  border-radius: $amount;
+  -moz-border-radius: $amount;
+  -webkit-border-radius: $amount;
+}

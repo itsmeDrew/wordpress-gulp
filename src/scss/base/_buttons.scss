@@ -1,0 +1,40 @@
+button {
+  border: none;
+}
+
+.btn {
+  @include font-size(16px);
+
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: .75rem 2rem;
+  color: $white;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-solid--primary {
+  @extend .btn;
+
+  background: $green;
+}
+
+.btn-solid--secondary {
+  @extend .btn;
+
+  background: $black;
+}
+
+.btn-outline--primary {
+  @extend .btn;
+
+  padding: 1rem 4rem;
+  border: 1px solid white;
+  background: rgba(0,0,0,0.5);
+
+  &:hover {
+    background: rgba(0,0,0,0.7);
+  }
+}

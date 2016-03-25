@@ -1,0 +1,229 @@
+@include placeholder($form-control-color-placeholder);
+
+.form__group {
+  margin-bottom: $form-group-margin;
+}
+
+.form__group--horizontal,
+.form__group--sm-horizontal,
+.form__group--md-horizontal,
+.form__group--lg-horizontal,
+.form__group--xl-horizontal {
+  position: relative;
+}
+
+.form__label {
+  display: inline-block;
+  cursor: pointer;
+  line-height: 1.5rem;
+  margin-bottom: 0.5rem;
+
+  .form__group--error & {
+    color: $color-error;
+    border-color: $color-error;
+  }
+
+  .form__group--warning & {
+    color: $color-warning;
+    border-color: $color-warning;
+  }
+
+  .form__group--success & {
+    color: $color-success;
+    border-color: $color-success;
+  }
+
+  .form__group--info & {
+    color: $color-info;
+    border-color: $color-info;
+  }
+
+  .form__group--horizontal & { @include form__label--horizontal(); }
+
+  @include breakpoint-larger($breakpoint-sm) {
+    .form__group--sm-horizontal & { @include form__label--horizontal(); }
+  }
+
+  @include breakpoint-larger($breakpoint-md) {
+    .form__group--md-horizontal & { @include form__label--horizontal(); }
+  }
+
+  @include breakpoint-larger($breakpoint-lg) {
+    .form__group--lg-horizontal & { @include form__label--horizontal(); }
+  }
+
+  @include breakpoint-larger($breakpoint-xl) {
+    .form__group--xl-horizontal & { @include form__label--horizontal(); }
+  }
+}
+
+.form__label--error {
+  @extend .form__label;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+select,
+textarea {
+  &.form__control {
+    height: 2.625rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.5rem;
+    font-family: $form-control-font-family;
+    font-weight: $font-weight-regular;
+    color: $form-control-color;
+    font-size: 1rem;
+    border: 2px solid $border-color;
+    border-radius: $form-control-border-radius;
+    background-color: $form-control-background-color;
+    transition: border-color $transition-time, color $transition-time;
+    -webkit-font-smoothing: antialiased;
+    -webkit-appearance: none;
+
+    &:focus {
+      border-color: $form-control-border-color-focus;
+      color: $form-control-color-focus;
+      outline: none;
+    }
+
+    .form__group--error & {
+      border-color: $color-error;
+    }
+
+    .form__group--warning & {
+      border-color: $color-warning;
+    }
+
+    .form__group--success & {
+      border-color: $color-success;
+    }
+
+    .form__group--info & {
+      border-color: $color-info;
+    }
+
+    .form__group--horizontal & { @include form__control--horizontal(); }
+
+    @include breakpoint-larger($breakpoint-sm) {
+      .form__group--sm-horizontal & { @include form__control--horizontal(); }
+    }
+
+    @include breakpoint-larger($breakpoint-md) {
+      .form__group--md-horizontal & { @include form__control--horizontal(); }
+    }
+
+    @include breakpoint-larger($breakpoint-lg) {
+      .form__group--lg-horizontal & { @include form__control--horizontal(); }
+    }
+
+    @include breakpoint-larger($breakpoint-xl) {
+      .form__group--xl-horizontal & { @include form__control--horizontal(); }
+    }
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  &.form__control {
+    margin-right: 0.5rem;
+  }
+}
+
+textarea.form__control {
+  height: auto;
+  min-height: 6.25rem;
+  line-height: $form-control-line-height;
+}
+
+select.form__control {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.form__toggle {
+  position: relative;
+  cursor: pointer;
+  padding-left: $form-toggle-width + 6px;
+
+  .form__control {
+    opacity: 0;
+    position: absolute;
+  }
+
+  .form__label:before,
+  .form__label:after {
+    box-sizing: border-box;
+    content: '';
+    display: block;
+    position: absolute;
+    transition: all 0.25s;
+  }
+
+  .form__label:before {
+    width: $form-toggle-width;
+    height: $form-toggle-height;
+    border-radius: $form-toggle-height / 2;
+    top: $form-toggle-top;
+    left: 0;
+    background: $form-toggle-bg;
+    border: 1px solid $form-toggle-bg;
+  }
+
+  .form__label:after {
+    width: $form-toggle-circle-size;
+    height: $form-toggle-circle-size;
+    border-radius: $form-toggle-circle-size / 2;
+    background: #fff;
+    top: $form-toggle-top + 1;
+    left: 1px;
+  }
+
+  .form__control:checked + .form__label {
+    &:after {
+      left: $form-toggle-width - $form-toggle-circle-size - 1;
+    }
+
+    &:before {
+      background: $form-toggle-checked-bg;
+      border: 1px solid $form-toggle-checked-bg;
+    }
+  }
+
+  .form__control:focus + .form__label:before {
+    border: 1px solid darken($form-toggle-bg, 10);
+  }
+
+  .form__control:focus:checked + .form__label:before {
+    border: 1px solid darken($form-toggle-checked-bg, 10);
+  }
+}
+
+// Fix for input type search
+[type="search"] {
+  -moz-appearance: textfield;
+  -webkit-appearance: textfield;
+  appearance: textfield;
+}
+
+// Hack for webkit only
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  select.form__control {
+    @include select();
+  }
+}
+
+// Hack for firefox
+@-moz-document url-prefix() {
+  select.form__control {
+    @include select();
+  }
+}

@@ -1,0 +1,50 @@
+///////////////////////////////
+/// BOILERPLATE SASS
+///////////////////////////////
+
+// Scut, a Sass utilities library: https://davidtheclark.github.io/scut/
+@import "scut/dist/scut";
+
+// core
+@import 'core/mixins';
+@import 'core/animations';
+
+// vendor
+$fa-font-path:        "fonts/font-awesome/" !default;
+@import '../../../node_modules/font-awesome/scss/font-awesome';
+@import 'vendor/bedrock/bedrock';
+@import '../../../node_modules/slick-carousel/slick/slick.scss';
+$slick-font-path: "fonts/slick/";
+@import '../../../node_modules/slick-carousel/slick/slick-theme.scss';
+
+// core overrides
+@import 'core/colors';
+@import 'core/config';
+
+/*!
+Theme Name: #{metadata(theme-name)}
+Theme URI: #{metadata(theme-uri)}
+Author: #{metadata(theme-author)}
+Author URI: #{metadata(theme-author-uri)}
+Description: #{metadata(theme-description)}
+Version: #{metadata(theme-version)}
+License: #{metadata(theme-license)}
+License URI: #{metadata(theme-license-uri)}
+Tags: #{metadata(theme-tags)}
+Text Domain: #{metadata(theme-text-domain)}
+Domain Path: #{metadata(theme-text-domain-path)}
+*/
+
+// base
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/forms';
+@import 'base/buttons';
+@import 'base/fonts';
+@import 'base/helpers';
+
+// components
+@import 'components/header';
+@import 'components/nav';
+@import 'components/hero';
+@import 'base/layout';

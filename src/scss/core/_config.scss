@@ -1,0 +1,59 @@
+///////////////////////////////
+/// THEME METADATA
+///////////////////////////////
+
+$_metadata: (
+  theme-name:               "BoilerplateTheme"
+, theme-uri:                "https://github.com/synapticism/wordpress-gulp-starter-kit"
+, theme-author:             "Drew Roberts"
+, theme-author-uri:         "http://synapticism.com"
+, theme-description:        "A minimally viable theme made with the WordPress/Gulp starter kit"
+, theme-version:            "0.2.2"
+, theme-license:            "GPLv3"
+, theme-license-uri:        "http://www.gnu.org/licenses/gpl.txt"
+, theme-tags:               (light, responsive-layout, right-sidebar, starter-theme, two-columns, translation-ready, white)
+, theme-text-domain:        "BoilerplateTheme"
+, theme-text-domain-path:   "/languages/"
+);
+
+
+///////////////////////////////
+/// BREAKPOINTS
+///////////////////////////////
+
+$breakpoint--small: 480px;
+$breakpoint--medium: 768px;
+$breakpoint--large: 970px;
+$breakpoint--xlarge: 1200px;
+
+///////////////////////////////
+/// TYPEOGRAPHY
+///////////////////////////////
+
+$base-font-family__serif--primary: 'Lato', arial, sans-serif;
+$base-font-family__serif--secondary: arial, sans-serif;
+$base-font-size: 16px;
+$base-line-height: 1.5;
+$base-link__color: $green;
+
+///////////////////////////////
+/// ANIMATIONS
+///////////////////////////////
+
+$base-animation__speed: 500ms;
+
+///////////////////////////////
+/// HEADER
+///////////////////////////////
+
+$header__padding: 20px;
+
+///////////////////////////////
+/// NAV
+///////////////////////////////
+
+$nav-mobile__background: $green;
+$nav-bars__color: $white;
+$nav-bars__height: 5px;
+$nav-bars__width: 35px;
+$nav-bars__border-radius: 1px;

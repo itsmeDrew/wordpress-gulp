@@ -1,0 +1,15 @@
+//////////////////////
+// HEADER
+//////////////////////
+
+.site-header__brand {
+  position: absolute;
+  top: $header__padding;
+  left: $header__padding;
+}
+
+.menu-active {
+  .site-header__content {
+    padding: 0;
+  }
+}

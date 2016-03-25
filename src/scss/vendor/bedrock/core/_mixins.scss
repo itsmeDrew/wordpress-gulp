@@ -1,0 +1,131 @@
+///////////////////////////////
+/// HELPERS
+///////////////////////////////
+
+@mixin cf() {
+  *zoom: 1;
+
+  &:before,
+  &:after {
+    content: '';
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+  }
+}
+
+///////////////////////////////
+/// BREAKPOINTS
+///////////////////////////////
+
+@mixin breakpoint($breakpoint, $type: 'max') {
+  @media (#{$type}-width: $breakpoint) {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($fromBreakpoint, $toBreakpoint) {
+  @media (min-width: $fromBreakpoint) and (max-width: $toBreakpoint - 1) {
+    @content;
+  }
+}
+
+@mixin breakpoint-smaller($breakpoint) {
+  @include breakpoint($breakpoint - 1, 'max') {
+    @content;
+  }
+}
+
+@mixin breakpoint-larger($breakpoint) {
+  @include breakpoint($breakpoint, 'min') {
+    @content;
+  }
+}
+
+///////////////////////////////
+/// GRID
+///////////////////////////////
+
+@mixin create-columns($size: null) {
+  @if ($size) {
+    $size: $size + '-';
+  }
+
+  @for $i from 1 through $grid-columns {
+    .col--#{$size}#{$i} { @include column($i/$grid-columns); }
+    .col--#{$size}offset-#{$i} { @include offset($i/$grid-columns); }
+    .col--#{$size}push-#{$i} { @include push($i/$grid-columns); }
+    .col--#{$size}pull-#{$i} { @include pull($i/$grid-columns); }
+  }
+
+  .col--#{$size}push-0 { left: 0; }
+  .col--#{$size}pull-0 { right: 0; }
+  .col--#{$size}offset-0 { margin-left: 0; }
+}
+
+@mixin column($ratio, $gutter: $grid-gutter) {
+  width: column-width($ratio);
+  float: left;
+}
+
+@mixin push($ratio) {
+  left: column-width($ratio);
+}
+
+@mixin pull($ratio) {
+  right: column-width($ratio);
+}
+
+@mixin offset($ratio) {
+  margin-left: column-width($ratio);
+}
+
+@mixin grid-gutter($gutter: $grid-gutter) {
+  padding-left:  $gutter / 2;
+  padding-right: $gutter / 2;
+}
+
+@function column-width($ratio) {
+  @return unquote(($ratio * 100) + '%');
+}
+
+
+///////////////////////////////
+/// FORMS
+///////////////////////////////
+
+@mixin select() {
+  background-color: $form-control-background-color;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPScxLjEnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZycgeG1sbnM6eGxpbms9J2h0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsnIHdpZHRoPSczNicgaGVpZ2h0PScyMCcgdmlld0JveD0nMCAwIDIwIDIwJz48cGF0aCBkPSdNMTcuNDE4IDYuMTA5YzAuMjcyLTAuMjY4IDAuNzA5LTAuMjY4IDAuOTc5IDBzMC4yNzEgMC43MDEgMCAwLjk2OWwtNy45MDggNy44M2MtMC4yNyAwLjI2OC0wLjcwNyAwLjI2OC0wLjk3OSAwbC03LjkwOC03LjgzYy0wLjI3LTAuMjY4LTAuMjctMC43MDEgMC0wLjk2OXMwLjcwOS0wLjI2OCAwLjk3OSAwbDcuNDE5IDcuMTQxIDcuNDE4LTcuMTQxeicgZmlsbD0nIzQ0NDQ0NCc+PC9wYXRoPjwvc3ZnPg==);
+  background-repeat: no-repeat;
+  background-position: right center;
+  padding-right: 36px;
+}
+
+@mixin form__control--horizontal() {
+  @include push(1/4);
+
+  position: relative;
+  width: column-width(3/4);
+  margin-bottom: 0;
+}
+
+@mixin form__label--horizontal() {
+  text-align: right;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: column-width(1/4);
+  padding-right: 0.9375rem;
+  transform: translateY(-50%);
+  margin-bottom: 0;
+}
+
+@mixin placeholder($color) {
+  ::-webkit-input-placeholder { color: $color; }
+  :-moz-placeholder { color: $color; }
+  ::-moz-placeholder { color: $color; }
+  :-ms-input-placeholder { color: $color; }
+}

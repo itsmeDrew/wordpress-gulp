@@ -1,0 +1,134 @@
+.site-nav__nav {
+  position: absolute;
+  top: $header__padding;
+  right: $header__padding;
+
+  @include breakpointSmallerThan($breakpoint--medium) {
+    background: $green;
+    left: 0;
+    text-align: right;
+    height: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: height .35s, opacity .35s;
+    z-index: 1000;
+  }
+
+  li {
+    display: inline-block;
+
+    @include breakpointSmallerThan($breakpoint--medium) {
+      padding: 1rem 0;
+      display: block;
+      text-align: center;
+    }
+  }
+
+  a {
+    color: $white;
+    text-transform: capitalize;
+
+    @include breakpointSmallerThan($breakpoint--medium) {
+      @include font-size(40px);
+
+      padding: 1rem 0;
+      display: block;
+      text-align: center;
+
+      &:hover {
+        color: $black;
+      }
+    }
+
+    @include breakpointLargerThan($breakpoint--medium) {
+      padding: 1rem;
+
+      &:hover {
+        color: $base-link__color;
+      }
+    }
+  }
+}
+
+// hamburger animation
+
+.hamburger__bars {
+  @include borderRadius($nav-bars__border-radius);
+
+  cursor: pointer;
+  height: $nav-bars__height;
+  width: $nav-bars__width;
+  background: $nav-bars__color;
+  position: absolute;
+  display: block;
+  content: '';
+  transition: all $base-animation__speed ease-in-out;
+}
+
+.site-nav__hamburger {
+  position: absolute;
+  right: $header__padding;
+  top: $header__padding;
+  cursor: pointer;
+  padding: 10px $nav-bars__width 16px 0px;
+  z-index: 9999;
+
+  &:active {
+    // bedrock override
+    position: absolute;
+    top: $header__padding;
+  }
+
+  span {
+    @extend .hamburger__bars;
+
+    &:before {
+      @extend .hamburger__bars;
+
+      top: -10px;
+    }
+
+    &:after {
+      @extend .hamburger__bars;
+
+      bottom: -10px;
+    }
+  }
+
+  &.active {
+    span {
+      background-color: transparent;
+
+      &:before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.menu-active {
+  @include breakpointSmallerThan($breakpoint--medium) {
+    overflow: hidden;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+
+    .site-nav__nav {
+      position: absolute;
+      top: 0;
+      background: $nav-mobile__background;
+      visibility: visible;
+      padding: 7rem 0;
+      height: 100%;
+      width: 100%;
+      opacity: 1;
+      z-index: 100;
+    }
+  }
+}

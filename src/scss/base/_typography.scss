@@ -1,0 +1,65 @@
+h1 {
+  @include font-size(40px);
+
+  font-weight: 800;
+  color: $black;
+  line-height: $base-line-height;
+}
+
+h2 {
+  @include font-size(90px);
+
+  font-family: $base-font-family__serif--secondary;
+  font-weight: 400;
+  color: $white;
+  line-height: $base-line-height;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+h3 {
+  @include font-size(18px);
+
+  font-family: $base-font-family__serif--secondary;
+  font-weight: 400;
+  color: $white;
+  line-height: $base-line-height;
+  text-transform: uppercase;
+}
+
+h4 {
+  @include font-size($base-font-size);
+
+  color: $black;
+  line-height: $base-line-height;
+}
+
+h5 {
+  @include font-size(14px);
+
+  color: $black;
+  line-height: $base-line-height;
+}
+
+p {
+  @include font-size($base-font-size);
+
+  font-family: $base-font-family__serif--primary;
+  line-height: $base-line-height;
+  margin-bottom: 1rem;
+  letter-spacing: 1px;
+}
+
+a {
+  color: $base-link__color;
+
+  &:hover {
+    color: darken($base-link__color, 20%);
+  }
+  &:active {
+    color: darken($base-link__color, 20%);
+  }
+  &:focus {
+    color: darken($base-link__color, 20%);
+  }
+}
