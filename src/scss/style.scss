@@ -48,3 +48,8 @@ Domain Path: #{metadata(theme-text-domain-path)}
 @import 'components/nav';
 @import 'components/hero';
 @import 'base/layout';
+
+// pages
+@import 'pages/home';
+@import 'pages/blog';
+@import 'pages/contact';
