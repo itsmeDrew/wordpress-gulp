@@ -37,12 +37,6 @@ $base-line-height: 1.5;
 $base-link__color: $green;
 
 ///////////////////////////////
-/// ANIMATIONS
-///////////////////////////////
-
-$base-animation__speed: 500ms;
-
-///////////////////////////////
 /// HEADER
 ///////////////////////////////
 
@@ -57,3 +51,9 @@ $nav-bars__color: $white;
 $nav-bars__height: 5px;
 $nav-bars__width: 35px;
 $nav-bars__border-radius: 1px;
+
+///////////////////////////////
+/// SECTIONS
+///////////////////////////////
+
+$base-section__padding: 5rem;

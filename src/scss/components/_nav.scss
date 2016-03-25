@@ -133,7 +133,7 @@
   position: absolute;
   display: block;
   content: '';
-  transition: all $base-animation__speed ease-in-out;
+  transition: all 500ms ease-in-out;
 }
 
 .site-nav__hamburger {

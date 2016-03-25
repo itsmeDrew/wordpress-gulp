@@ -4,3 +4,7 @@
 /// Rule: If you us it more
 /// than once, make it a component.
 ////////////////////////////////////
+
+.blog {
+  @extend .section-block;
+}
